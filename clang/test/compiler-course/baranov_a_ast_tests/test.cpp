@@ -11,6 +11,9 @@ template <class T> class myClass {
   T x;
   int inner;
 };
+
+
+
 // CHECK: A(struct)
 // CHECK-NEXT: |_Fields
 // CHECK-NEXT: | |_ (has no fields)

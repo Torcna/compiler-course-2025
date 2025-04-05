@@ -27,6 +27,7 @@ bool hasAnyField(const clang::CXXRecordDecl *recordDecl) {
   }
   return false;
 }
+
 void handleFields(const clang::CXXRecordDecl *recordDecl,
                   llvm::raw_ostream &output) {
   for (const auto *Decl : recordDecl->decls()) {
@@ -97,7 +98,7 @@ public:
   explicit DataTypesVisitor(clang::ASTContext *context) : m_context_(context) {}
   bool VisitCXXRecordDecl(clang::CXXRecordDecl *recordDecl) {
     auto &&output = llvm::outs();
-    // is union ????
+    // is union
     if (recordDecl->isUnion()) {
       output << recordDecl->getNameAsString() << "(union)\n";
     } else {
@@ -149,6 +150,7 @@ public:
 private:
   DataTypesVisitor visitor_;
 };
+
 class DataTypesAction final : public clang::PluginASTAction {
 public:
   std::unique_ptr<clang::ASTConsumer>
